@@ -17,10 +17,10 @@ __ALERT_SEVERITY__ = APPLICATION['ALERT_SEVERITY']
 __SLACK_WEBHOOK_URL__ = APPLICATION['SLACK_WEBHOOK_URL']
 
 slack_message = {
-    "warning": f'WARNING for %s! {__INPUT_LABEL__.capitalize()} reading shows %s {__INPUT_UNIT__.capitalize()} ',
-    "alarming": f'ALARM from %s! Detected an alarming reading of {__INPUT_LABEL__.capitalize()}: %s {__INPUT_UNIT__.capitalize()} ',
-    "caution": f'CAUTION for %s! {__INPUT_LABEL__.capitalize()} is %s {__INPUT_UNIT__.capitalize()} ',
-    "broken": f'BROKEN device %s! Detected {__INPUT_LABEL__.capitalize()} reading is %s {__INPUT_UNIT__.capitalize()} ',
+    "warning": f'WARNING for %s! %s reading shows %s %s',
+    "alarming": f'ALARM from %s! Detected an alarming reading of %s: %s %s',
+    "caution": f'CAUTION for %s! %s is %s %s',
+    "broken": f'BROKEN device %s! Detected %s reading is %s %s',
 }
 
 def module_main(data):
@@ -40,7 +40,7 @@ def module_main(data):
         # prepare the slack POST message
         # SLACK DOC: https://api.slack.com/messaging/webhooks
         device_name = socket.gethostname()
-        slack_data = json.dumps({'text': slack_message[__ALERT_SEVERITY__] % (device_name, parsed_data)})
+        slack_data = json.dumps({'text': slack_message[__ALERT_SEVERITY__] % (device_name, __INPUT_LABEL__, parsed_data, __INPUT_UNIT__)})
 
         # POST notification to Slack API
         response = requests.post(url=__SLACK_WEBHOOK_URL__, data=slack_data, headers={'Content-Type': 'application/json'})
