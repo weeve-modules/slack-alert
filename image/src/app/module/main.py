@@ -6,8 +6,13 @@ Mostly only this file requires changes
 import socket
 import json
 import requests
+import time
 
 from app.config import APPLICATION
+
+now = time.localtime()
+current_time = time.strftime("%H:%M:%S", now)
+print(current_time)
 
 
 # Set module settings
@@ -16,12 +21,12 @@ __INPUT_UNIT__ = APPLICATION['INPUT_UNIT']
 __ALERT_SEVERITY__ = APPLICATION['ALERT_SEVERITY']
 __ALERT_MESSAGE__ = APPLICATION['ALERT_MESSAGE']
 __SLACK_WEBHOOK_URL__ = APPLICATION['SLACK_WEBHOOK_URL']
-
+ 
 slack_message = {
-    "warning": f'WARNING for %s! %s %s %s %s',
-    "alarming": f'ALARM from %s! %s %s: %s %s',
-    "caution": f'CAUTION for %s! %s %s %s %s',
-    "broken": f'BROKEN device %s!%s %s %s %s',
+    "warning": f'WARNING for %s! ',
+    "alarming": f'ALARM from %s! ',
+    "caution": f'CAUTION for %s! ',
+    "broken": f'BROKEN device %s!',
 }
 
 def module_main(data):
@@ -37,12 +42,10 @@ def module_main(data):
     """
     try:
         parsed_data = data[__INPUT_LABEL__]
-        
         # prepare the slack POST message
         # SLACK DOC: https://api.slack.com/messaging/webhooks
         device_name = socket.gethostname()
-        slack_data = json.dumps({'text': slack_message[__ALERT_SEVERITY__] % (device_name,__ALERT_MESSAGE__ ,__INPUT_LABEL__, parsed_data, __INPUT_UNIT__)})
-
+        slack_data = json.dumps({'text': slack_message[__ALERT_SEVERITY__] % device_name + __ALERT_MESSAGE__.replace("{{value}}", str(parsed_data)).replace("{{label}}", __INPUT_LABEL__).replace("{{time}}", str(current_time)).replace("{{unit}}",__INPUT_UNIT__)})
         # POST notification to Slack API
         response = requests.post(url=__SLACK_WEBHOOK_URL__, data=slack_data, headers={'Content-Type': 'application/json'})
 
