@@ -17,19 +17,19 @@ image:
 environments:
   - key: INPUT_LABEL
     description: The field to apply alert on
-    value: ''
+    value: ""
     default: temperature
     type: string
     name: Input Label
   - key: INPUT_UNIT
     description: The input unit
-    value: ''
+    value: ""
     default: Celsius
     type: string
     name: Input Unit
   - key: ALERT_SEVERITY
     description: Order of the results
-    value: ''
+    value: ""
     default: Warning
     type: enum
     options:
@@ -39,14 +39,14 @@ environments:
       - Broken
     name: Alert Severity
   - key: ALERT_MESSAGE
-    description: Write custom alert message as per requirements. Use the described format to get the required field in the alert {{label}} for Input label,{{value}} for data of device,{{unit}} for Input Unit and {{time}} for time-stamp 
-    value: ''
+    description: Write custom alert message as per requirements. Use the described format to get the required field in the alert {{label}} for Input label,{{value}} for data of device, {{unit}} for Input Unit, {{alert_severity}}, {{device_name}} and {{time}} for time-stamp
+    value: ""
     default: Data point {{label}} reached the value of {{value}} {{unit}} at {{time}}!
     type: string
     name: Alert Message
   - key: SLACK_WEBHOOK_URL
     description: Webhook to the slack channel to put alerts on
-    value: ''
+    value: ""
     default: https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
     type: string
     name: Slack Webhook URL
