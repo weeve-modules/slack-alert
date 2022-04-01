@@ -38,6 +38,12 @@ environments:
       - Caution
       - Broken
     name: Alert Severity
+  - key: ALERT_MESSAGE
+    description: Write custom alert message
+    value: ''
+    default: The Reading shows
+    type: string
+    name: Alert Message
   - key: SLACK_WEBHOOK_URL
     description: Webhook to the slack channel to put alerts on
     value: ''
