@@ -9,5 +9,6 @@ APPLICATION = {
     "INPUT_LABEL": env("INPUT_LABEL", "temperature"),
     "INPUT_UNIT": env("INPUT_UNIT", "Celsius"),
     "ALERT_SEVERITY": env("ALERT_SEVERITY", "warning"),
+    "ALERT_MESSAGE": env("ALERT_MESSAGE", "Data point {{label}} reached the value of {{value}} {{unit}} at {{time}}"),
     "SLACK_WEBHOOK_URL": env("SLACK_WEBHOOK_URL", "xxx")
 }
