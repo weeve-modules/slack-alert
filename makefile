@@ -5,7 +5,7 @@ create_image:
 .phony: create_image
 
 create_and_push_multi_platform:
-	docker buildx build --platform linux/amd64,linux/arm,linux/arm64 -t ${MODULE} --push . -f image/Dockerfile
+	docker buildx build --platform linux/amd64,linux/arm,linux/arm64 -t ${MODULE} . -f image/Dockerfile
 .phony: create_and_push_multi_platform
 
 push_latest:
