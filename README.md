@@ -4,7 +4,7 @@
 | -------------- | ------------------------------- |
 | Name           | Slack Alert                     |
 | Version        | v0.0.2                          |
-| Dockerhub Link | [weevenetwork/weeve-slack-alert](https://hub.docker.com/r/weevenetwork/weeve-slack-alert)  |
+| Dockerhub Link | [weevenetwork/slack-alert](https://hub.docker.com/r/weevenetwork/slack-alert)  |
 | Authors        | Jakub Grzelak                   |
 
 
@@ -100,7 +100,7 @@ This module does not produce any output except Slack notifications.
 version: "3"
 services:
   slack-alert:
-    image: weevenetwork/weeve-slack-alert
+    image: weevenetwork/slack-alert
     environment:
       MODULE_NAME: slack-alert
       MODULE_TYPE: EGRESS

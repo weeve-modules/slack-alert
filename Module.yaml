@@ -12,7 +12,7 @@ categories:
   - id: category
     name: Alert
 image:
-  name: weevenetwork/weeve-slack-alert
+  name: weevenetwork/slack-alert
   tag: latest
 environments:
   - key: INPUT_LABEL
