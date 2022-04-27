@@ -4,7 +4,7 @@ All constants specific to weeve
 from app.utils.env import env
 
 WEEVE = {
-    "MODULE_NAME": env("MODULE_NAME", "weeve-slack-alert"),
+    "MODULE_NAME": env("MODULE_NAME", "slack-alert"),
     "MODULE_TYPE": env("MODULE_TYPE", "EGRESS"),
     "EGRESS_SCHEME": env("EGRESS_SCHEME", "http"),
     "EGRESS_HOST": env("EGRESS_HOST", "localhost"),
