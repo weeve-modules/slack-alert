@@ -1,61 +1,69 @@
-version: 1.0.0
-name: Slack Alert
-description: Sending alerts and notifications to Slack Channels
-icon: https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_slack-alert_output.png
-type: output
-tags:
-  - Slack Alert
-  - output
-  - notifications
-  - alerts
-categories:
-  - id: category
-    name: Alert
+displayName: 'Slack Alert'       # Display name for the module that will be displayed in the UI.
+moduleName: 'slack-alert'        # Module name that will be used to reference the module, and uniquely identify the module and their versions.
+description: 'Sending alerts and notifications to Slack Channels'       # Module description that will be displayed in the UI.
+versionName: '1.0.0'                    # Module version name that will be used to reference the module version, and uniquely identify the module version with a common name.
+isPublic: true                          # Boolean value that indicates if the module is Public or Private.
+categories:                             # Array of category that will be used to group the module in the UI.
+  - 'Alert'
+type: 'Output'      # Module type (Input, Processing, Output) that will be used to group the module in the UI.
 image:
-  name: weevenetwork/slack-alert
-  tag: latest
-environments:
-  - key: INPUT_LABEL
-    description: The field to apply alert on
-    value: ""
-    default: temperature
-    type: string
-    name: Input Label
-  - key: INPUT_UNIT
-    description: The input unit
-    value: ""
-    default: Celsius
-    type: string
-    name: Input Unit
-  - key: ALERT_SEVERITY
+  name: 'weevenetwork/slack-alert'     # Image name from the docker registry.
+  tag: 'latest'                               # Image tag from the docker registry.
+  homepage: 'https://hub.docker.com/weevenetwork/slack-alert'      # Image homepage from the docker registry.
+repository: 'https://github.com/weeve-modules/slack-alert'     # Repository URL to source code.
+envs:                                   # Array of environment variables that will be used to configure the module. Also used to show related fields on the UI.
+  - name: Input Label                   # name of the field to be displayed on the UI.
+    key: INPUT_LABEL                # key to set in the environment variables.
+    description: The field to apply alert on     # Description/helper text for the field.
+    value: 'temperature'                         # Value to be set in the environment variables.
+    type: 'text'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
+    dependencies:                     # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
+      - key:                          # key of the dependency
+        value:                        # value of the dependency
+  - name: Input Unit                   # name of the field to be displayed on the UI.
+    key: INPUT_UNIT                # key to set in the environment variables.
+    description: The input unit     # Description/helper text for the field.
+    value: 'Celsius'                         # Value to be set in the environment variables.
+    type: 'text'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
+    dependencies:                     # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
+      - key:                          # key of the dependency
+        value:                        # value of the dependency
+  - name: Alert Severity
+    key: ALERT_SEVERITY
     description: Order of the results
-    value: ""
-    default: Warning
-    type: enum
+    value: 'Warning'
+    type: 'select'
     options:
-      - Warning
-      - Alarming
-      - Caution
-      - Broken
-    name: Alert Severity
-  - key: ALERT_MESSAGE
-    description: Use string interpolation format to get required field in the alert message -> {{label}}, {{value}}, {{unit}}, {{alert_severity}}, {{device_name}} and {{time}}
-    value: ""
-    default: Data point {{label}} reached the value of {{value}} {{unit}} at {{time}}!
-    type: string
-    name: Alert Message
-  - key: SLACK_WEBHOOK_URL
-    description: Webhook to the slack channel to put alerts on
-    value: ""
-    default: https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
-    type: string
-    name: Slack Webhook URL
-commands: []
-document:
-  ports: []
-  volumes: []
-  restart_policy:
-    condition: on-failure
-    delay: 10s
-    max_attempts: 3
-    window: 120s
+      - 'Warning'
+      - 'Alarming'
+      - 'Caution'
+      - 'Broken'
+    dependencies:
+      - key:
+        value:
+  - name: Alert Message                   # name of the field to be displayed on the UI.
+    key: ALERT_MESSAGE                # key to set in the environment variables.
+    description: Use string interpolation format to get required field in the alert message -> {{label}}, {{value}}, {{unit}}, {{alert_severity}}, {{device_name}} and {{time}}     # Description/helper text for the field.
+    value: 'Data point {{label}} reached the value of {{value}} {{unit}} at {{time}}!'                         # Value to be set in the environment variables.
+    type: 'text'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
+    dependencies:                     # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
+      - key:                          # key of the dependency
+        value:                        # value of the dependency
+  - name: Slack Webhook URL                   # name of the field to be displayed on the UI.
+    key: SLACK_WEBHOOK_URL                # key to set in the environment variables.
+    description: Webhook to the slack channel to put alerts on     # Description/helper text for the field.
+    value: 'https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX'                         # Value to be set in the environment variables.
+    type: 'text'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
+    dependencies:                     # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
+      - key:                          # key of the dependency
+        value:                        # value of the dependency
+ports:                                  # Array of ports that will be exposed by the module.
+mounts:
+tags:                                   # Array of tags.
+  - 'Python'
+  - 'Output'
+  - 'Slack Alert'
+  - 'output'
+  - 'notifications'
+  - 'alerts'
+icon: 'https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_slack-alert_output.png'    # Icon URL that will be displayed in the UI.

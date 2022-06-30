@@ -1,0 +1,13 @@
+version: "3.0"
+services:
+  slack-alert:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    environment:
+      MODULE_NAME: "slack-alert"
+      MODULE_TYPE: "Output"
+      INGRESS_HOST: "0.0.0.0"
+      INGRESS_PORT: "80"
+    ports:
+      - 80:80
