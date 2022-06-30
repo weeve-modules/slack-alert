@@ -10,7 +10,7 @@ import socket
 import json
 import requests
 import time
-from params import PARAM
+from .params import PARAMS
 
 log = getLogger("module")
 
@@ -35,20 +35,20 @@ def module_main(received_data: any) -> str:
     print(current_time)
 
     try:
-        parsed_data = received_data[PARAM['INPUT_LABEL']]
+        parsed_data = received_data[PARAMS['INPUT_LABEL']]
         device_name = socket.gethostname()
 
        # This is a way to format the data in a way that Slack can understand.
         replacement_dict = {
             '{{time}}': str(current_time),
             '{{value}}':  str(parsed_data),
-            '{{label}}':  PARAM['INPUT_LABEL'],
-            '{{unit}}': PARAM['INPUT_UNIT'],
+            '{{label}}':  PARAMS['INPUT_LABEL'],
+            '{{unit}}': PARAMS['INPUT_UNIT'],
             '{{device_name}}': str(device_name),
-            '{{alert_severity}}': PARAM['ALERT_SEVERITY'],
+            '{{alert_severity}}': PARAMS['ALERT_SEVERITY'],
         }
 
-        alert_message = PARAM['ALERT_MESSAGE']
+        alert_message = PARAMS['ALERT_MESSAGE']
         for key, value in replacement_dict.items():
             alert_message = alert_message.replace(key, value)
 
@@ -59,7 +59,7 @@ def module_main(received_data: any) -> str:
         print(replacement_dict)
         print("---------------------------------")
 
-        response = requests.post(url=PARAM['SLACK_WEBHOOK_URL'], data=slack_data, headers={
+        response = requests.post(url=PARAMS['SLACK_WEBHOOK_URL'], data=slack_data, headers={
             'Content-Type': 'application/json'})
 
         # Error handling

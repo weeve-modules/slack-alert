@@ -4,7 +4,7 @@ All constants specific to the application
 from os import getenv
 
 
-PARAM = {
+PARAMS = {
     "INPUT_LABEL": getenv("INPUT_LABEL", "temperature"),
     "INPUT_UNIT": getenv("INPUT_UNIT", "Celsius"),
     "ALERT_SEVERITY": getenv("ALERT_SEVERITY", "warning"),
