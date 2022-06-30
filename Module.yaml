@@ -9,7 +9,7 @@ type: 'Output'      # Module type (Input, Processing, Output) that will be used 
 image:
   name: 'weevenetwork/slack-alert'     # Image name from the docker registry.
   tag: 'latest'                               # Image tag from the docker registry.
-  homepage: 'https://hub.docker.com/weevenetwork/slack-alert'      # Image homepage from the docker registry.
+  homepage: 'https://hub.docker.com/r/weevenetwork/slack-alert'      # Image homepage from the docker registry.
 repository: 'https://github.com/weeve-modules/slack-alert'     # Repository URL to source code.
 envs:                                   # Array of environment variables that will be used to configure the module. Also used to show related fields on the UI.
   - name: Input Label                   # name of the field to be displayed on the UI.
@@ -17,17 +17,15 @@ envs:                                   # Array of environment variables that wi
     description: The field to apply alert on     # Description/helper text for the field.
     value: 'temperature'                         # Value to be set in the environment variables.
     type: 'text'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
-    dependencies:                     # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
-      - key:                          # key of the dependency
-        value:                        # value of the dependency
+    options: []                        # Options for the field if it is a select or multiple select. An array of string options
+    dependencies: []                    # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
   - name: Input Unit                   # name of the field to be displayed on the UI.
     key: INPUT_UNIT                # key to set in the environment variables.
     description: The input unit     # Description/helper text for the field.
     value: 'Celsius'                         # Value to be set in the environment variables.
     type: 'text'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
-    dependencies:                     # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
-      - key:                          # key of the dependency
-        value:                        # value of the dependency
+    options: []                        # Options for the field if it is a select or multiple select. An array of string options
+    dependencies: []                    # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
   - name: Alert Severity
     key: ALERT_SEVERITY
     description: Order of the results
@@ -38,27 +36,23 @@ envs:                                   # Array of environment variables that wi
       - 'Alarming'
       - 'Caution'
       - 'Broken'
-    dependencies:
-      - key:
-        value:
+    dependencies: []                    # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
   - name: Alert Message                   # name of the field to be displayed on the UI.
     key: ALERT_MESSAGE                # key to set in the environment variables.
-    description: Use string interpolation format to get required field in the alert message -> {{label}}, {{value}}, {{unit}}, {{alert_severity}}, {{device_name}} and {{time}}     # Description/helper text for the field.
+    description: 'Use string interpolation format to get required field in the alert message -> {{label}}, {{value}}, {{unit}}, {{alert_severity}}, {{device_name}} and {{time}}'     # Description/helper text for the field.
     value: 'Data point {{label}} reached the value of {{value}} {{unit}} at {{time}}!'                         # Value to be set in the environment variables.
     type: 'text'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
-    dependencies:                     # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
-      - key:                          # key of the dependency
-        value:                        # value of the dependency
+    options: []                        # Options for the field if it is a select or multiple select. An array of string options
+    dependencies: []                    # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
   - name: Slack Webhook URL                   # name of the field to be displayed on the UI.
     key: SLACK_WEBHOOK_URL                # key to set in the environment variables.
     description: Webhook to the slack channel to put alerts on     # Description/helper text for the field.
     value: 'https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX'                         # Value to be set in the environment variables.
     type: 'text'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
-    dependencies:                     # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
-      - key:                          # key of the dependency
-        value:                        # value of the dependency
-ports:                                  # Array of ports that will be exposed by the module.
-mounts:
+    options: []                        # Options for the field if it is a select or multiple select. An array of string options
+    dependencies: []                    # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
+ports: []                                  # Array of ports that will be exposed by the module.
+mounts: []
 tags:                                   # Array of tags.
   - 'Python'
   - 'Output'
