@@ -32,13 +32,12 @@ def module_main(received_data: any) -> str:
 
     now = time.localtime()
     current_time = time.strftime("%H:%M:%S", now)
-    print(current_time)
 
     try:
         parsed_data = received_data[PARAMS['INPUT_LABEL']]
         device_name = socket.gethostname()
 
-       # This is a way to format the data in a way that Slack can understand.
+        # This is a way to format the data in a way that Slack can understand.
         replacement_dict = {
             '{{time}}': str(current_time),
             '{{value}}':  str(parsed_data),
@@ -54,10 +53,8 @@ def module_main(received_data: any) -> str:
 
         slack_data = json.dumps({'text': alert_message})
 
-        print("---------------------------------")
-        print(slack_data)
-        print(replacement_dict)
-        print("---------------------------------")
+        log.debug(f"Slack data: {slack_data}")
+        log.debug(f"Replacement dict: {replacement_dict}")
 
         response = requests.post(url=PARAMS['SLACK_WEBHOOK_URL'], data=slack_data, headers={
             'Content-Type': 'application/json'})
