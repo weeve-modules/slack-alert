@@ -1,12 +1,12 @@
 # Slack Alert
 
-|              |                                                                  |
-| ------------ | ---------------------------------------------------------------- |
-| name         | Slack Alert                                                      |
-| version      | v2.0.0                                                           |
-| GitHub       | [python-output-module-boilerplate](https://github.com/weeve-modules/slack-alert) |
-| DockerHub | [weevenetwork/slack-alert](https://hub.docker.com/r/weevenetwork/slack-alert)  |
-| authors      | Jakub Grzelak, Paul Gaiduk                                       |
+|              |                                                                                |
+| ------------ | ------------------------------------------------------------------------------ |
+| name         | Slack Alert                                                                    |
+| version      | v2.0.0                                                                         |
+| GitHub       | [slack-alert](https://github.com/weeve-modules/slack-alert)                    |
+| DockerHub    | [weevenetwork/slack-alert](https://hub.docker.com/r/weevenetwork/slack-alert)  |
+| authors      | Jakub Grzelak, Paul Gaiduk                                                     |
 
 ***
 ## Table of Content
@@ -21,7 +21,7 @@
   - [Output](#output)
 ***
 
-## Description 
+## Description
 
 Slack Alert is an alerting module responsible for sending notifications to Slack channels when triggered.
 This module is containerized using Docker.
