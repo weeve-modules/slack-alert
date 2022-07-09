@@ -3,8 +3,8 @@
 |              |                                                                                |
 | ------------ | ------------------------------------------------------------------------------ |
 | name         | Slack Alert                                                                    |
-| version      | v2.0.0                                                                         |
-| GitHub       | [slack-alert](https://github.com/weeve-modules/slack-alert)                    |
+| version      | v1.0.0                                                                         |
+| GitHub       | [weeve-modules/slack-alert](https://github.com/weeve-modules/slack-alert)                    |
 | DockerHub    | [weevenetwork/slack-alert](https://hub.docker.com/r/weevenetwork/slack-alert)  |
 | authors      | Jakub Grzelak, Paul Gaiduk                                                     |
 
