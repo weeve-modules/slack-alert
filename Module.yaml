@@ -1,7 +1,7 @@
 displayName: 'Slack Alert'       # Display name for the module that will be displayed in the UI.
 moduleName: 'slack-alert'        # Module name that will be used to reference the module, and uniquely identify the module and their versions.
 description: 'Sending alerts and notifications to Slack Channels'       # Module description that will be displayed in the UI.
-versionName: '1.0.0'                    # Module version name that will be used to reference the module version, and uniquely identify the module version with a common name.
+versionName: 'v1.0.0'                    # Module version name that will be used to reference the module version, and uniquely identify the module version with a common name.
 isPublic: true                          # Boolean value that indicates if the module is Public or Private.
 categories:                             # Array of category that will be used to group the module in the UI.
   - 'Alert'
