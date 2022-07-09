@@ -3,7 +3,7 @@
 |                |                                 |
 | -------------- | ------------------------------- |
 | Name           | Slack Alert                     |
-| Version        | v0.0.2                          |
+| Version        | v0.0.1                          |
 | Dockerhub Link | [weevenetwork/slack-alert](https://hub.docker.com/r/weevenetwork/slack-alert)  |
 | Authors        | Jakub Grzelak                   |
 
