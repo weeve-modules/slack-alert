@@ -51,12 +51,16 @@ envs:                                   # Array of environment variables that wi
     type: 'text'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
     options: []                        # Options for the field if it is a select or multiple select. An array of string options
     dependencies: []                    # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
-ports: []                                  # Array of ports that will be exposed by the module.
+ports: []
+envPorts: []
 mounts: []
+envMounts: []
+devices: []
+envDevices: []
 tags:                                   # Array of tags.
   - 'Python'
   - 'Output'
-  - 'Slack Alert'
+  - 'Slack-Alert'
   - 'output'
   - 'notifications'
   - 'alerts'
